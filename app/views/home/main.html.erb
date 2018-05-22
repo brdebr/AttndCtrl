@@ -1,1 +1,11 @@
 <h1>This is the public page</h1>
+
+<% if admin_signed_in? %>
+  <h2>Welcome <%= current_admin.email %>!</h2>
+  <%=link_to dashboard_path do %>
+    <h3>Access your dashboard</h3>
+  <% end %>
+<% else %>
+  <h3><%= link_to 'Sign up', new_admin_registration_path %></h3>
+  <h3><%= link_to 'Sign in', new_admin_session_path %></h3>
+<% end %>
