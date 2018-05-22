@@ -32,6 +32,15 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Devise for login/out managment in the background
 gem 'devise', '~> 4.4'
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Bootstrap 4 Theme
+gem 'bootstrap', '~> 4.0.0'
+# Fonts and icons, awesome but not that much
+gem 'font-awesome-sass', '~> 5.0.13'
+# Format querys as table for easier debugging using the console
+gem 'hirb'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
