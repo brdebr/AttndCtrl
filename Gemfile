@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use Devise for login/out managment in the background
 gem 'devise', '~> 4.4'
+# Use IMS-LTI gem to handle various operations, like Oauth
+gem 'ims-lti', '~> 2.2', '>= 2.2.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
