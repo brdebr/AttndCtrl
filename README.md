@@ -1,7 +1,8 @@
 # Attendance Control - LTI
-Web app to manage the attendance of students from a LMS.  
+Web app to manage the attendance of students from an LMS.  
 Developed using `Ruby on Rails` and the standard `IMS-LTI`.
 
+#### This project is heavely documented using the [wiki](https://github.com/brdebr/AttndCtrl/wiki)
 
 Things I'll cover at this file when the project is finished:
 

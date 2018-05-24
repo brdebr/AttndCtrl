@@ -28,5 +28,10 @@
     "name": "ui-improvment",
     "color": "89f909",
     "description": "Making things a little prettier"
+  },
+  {
+    "name": "documentation",
+    "color": "192da0",
+    "description": "GitHub Wiki related"
   }
 ]
