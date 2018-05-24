@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AttndCtrl</title>
-    <%= csrf_meta_tags %>
+  <%= render 'layouts/head' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+  <body class="<%= controller_name %>-<%= action_name %>">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+
   <ul>
     <li><%= link_to 'Main', root_path %></li>
     <li><%= link_to 'Dashboard', dashboard_path %></li>
@@ -22,6 +17,7 @@
       </li>
     <% end %>
   </ul>
+
     <%= yield %>
   </body>
 </html>
