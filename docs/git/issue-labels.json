@@ -1,0 +1,32 @@
+[
+  {
+    "name": "back-end",
+    "color": "7057ff",
+    "description": "Things people dont see but are cool too"
+  },
+  {
+    "name": "front-end",
+    "color": "a2eeef",
+    "description": "Things that people see and touch"
+  },
+  {
+    "name": "improvment",
+    "color": "b4f99d",
+    "description": "Making things that already work, better"
+  },
+  {
+    "name": "minor-bug",
+    "color": "fef2c0",
+    "description": "Probably most people won't notice them"
+  },
+  {
+    "name": "productivity",
+    "color": "a9d7e8",
+    "description": "Spending time at sparing time in the future"
+  },
+  {
+    "name": "ui-improvment",
+    "color": "89f909",
+    "description": "Making things a little prettier"
+  }
+]
