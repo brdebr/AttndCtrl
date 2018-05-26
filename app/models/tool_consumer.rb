@@ -1,0 +1,2 @@
+class ToolConsumer < ApplicationRecord
+end
