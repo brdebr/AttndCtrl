@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use Devise for login/out managment in the background
 gem 'devise', '~> 4.4'
+# Use this gem instead of the required inside IMS-LT
+gem 'oauth', '~> 0.5.1'
 # Use IMS-LTI gem to handle various operations, like Oauth
 gem 'ims-lti', '~> 2.2', '>= 2.2.3'
 

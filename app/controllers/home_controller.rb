@@ -4,7 +4,7 @@ require 'ims/lti'
 require 'oauth/request_proxy/action_controller_request'
 
 class HomeController < ApplicationController
-  before_action :authenticate_admin!, :except => [:main]
+  before_action :authenticate_admin!, :except => [:main,:launch]
 
   def launch
     authenticator = IMS::LTI::Services::MessageAuthenticator.new(request.url, request.request_parameters, 'secret')
