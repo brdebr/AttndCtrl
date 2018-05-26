@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'dashboard', to: "home#dashboard"
   # LTI launch (responds to get and post)
-  match 'launch', to: "home#launch", via: [:get, :post], as: :lti_launch
+  match 'launch', to: "tool_consumers#launch", via: [:get, :post], as: :lti_launch
 end
