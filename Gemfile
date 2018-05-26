@@ -36,6 +36,8 @@ gem 'oauth', '~> 0.5.1'
 # Use IMS-LTI gem to handle various operations, like Oauth
 gem 'ims-lti', '~> 2.2', '>= 2.2.3'
 
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Bootstrap 4 Theme
