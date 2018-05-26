@@ -1,4 +1,5 @@
 class ToolConsumersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_tool_consumer, only: [:show, :edit, :update, :destroy]
 
   # GET /tool_consumers
