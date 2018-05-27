@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :timetables
   devise_for :admins
   root 'home#main'
 
