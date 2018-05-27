@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180527190113) do
+ActiveRecord::Schema.define(version: 20180527190917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20180527190113) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tool_consumer_id"
+    t.index ["tool_consumer_id"], name: "index_timetables_on_tool_consumer_id"
   end
 
   create_table "tool_consumers", force: :cascade do |t|
@@ -48,5 +50,6 @@ ActiveRecord::Schema.define(version: 20180527190113) do
     t.index ["admin_id"], name: "index_tool_consumers_on_admin_id"
   end
 
+  add_foreign_key "timetables", "tool_consumers"
   add_foreign_key "tool_consumers", "admins"
 end
