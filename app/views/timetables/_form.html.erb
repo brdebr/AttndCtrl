@@ -16,6 +16,11 @@
     <%= form.text_field :name, id: :timetable_name %>
   </div>
 
+  <div>
+    <%= form.label :tool_consumer %>
+    <%= collection_select :timetable, :tool_consumer_id, @tool_consumers, :id, :name, {}, {:multiple => false}  %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

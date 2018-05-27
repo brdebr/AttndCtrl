@@ -15,10 +15,12 @@ class TimetablesController < ApplicationController
   # GET /timetables/new
   def new
     @timetable = Timetable.new
+    @tool_consumers = ToolConsumer.all
   end
 
   # GET /timetables/1/edit
   def edit
+    @tool_consumers = ToolConsumer.all
   end
 
   # POST /timetables
@@ -69,6 +71,6 @@ class TimetablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timetable_params
-      params.require(:timetable).permit(:name)
+      params.require(:timetable).permit(:name,:tool_consumer_id)
     end
 end
