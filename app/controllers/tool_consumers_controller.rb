@@ -26,14 +26,15 @@ class ToolConsumersController < ApplicationController
   # POST /tool_consumers.json
   def create
     @tool_consumer = ToolConsumer.new(tool_consumer_params)
+    @tool_consumer.admin = current_admin
 
     respond_to do |format|
       if @tool_consumer.save
         format.html { redirect_to @tool_consumer, notice: 'Tool consumer was successfully created.' }
         format.json { render :show, status: :created, location: @tool_consumer }
       else
-        format.html { render :new }
-        format.json { render json: @tool_consumer.errors, status: :unprocessable_entity }
+          format.html { render :new }
+          format.json { render json: @tool_consumer.errors, status: :unprocessable_entity }
       end
     end
   end
