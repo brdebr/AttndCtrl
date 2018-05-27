@@ -5,7 +5,7 @@ class ToolConsumersController < ApplicationController
   # GET /tool_consumers
   # GET /tool_consumers.json
   def index
-    @tool_consumers = ToolConsumer.all
+    @tool_consumers = ToolConsumer.where admin:current_admin
   end
 
   # GET /tool_consumers/1
