@@ -5,19 +5,20 @@
   <body class="<%= controller_name %>-<%= action_name %>">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <div class="container-fluid">
+    <ul>
+      <li><%= link_to 'Main', root_path %></li>
+      <li><%= link_to 'Dashboard', dashboard_path %></li>
+      <% if admin_signed_in? %>
+        <li>
+          <%= link_to destroy_admin_session_path , :method => :delete do %>
+            Log-out <i class="far fa-frown"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
 
-  <ul>
-    <li><%= link_to 'Main', root_path %></li>
-    <li><%= link_to 'Dashboard', dashboard_path %></li>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to destroy_admin_session_path , :method => :delete do %>
-          Log-out <i class="far fa-frown"></i>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-
-    <%= yield %>
+      <%= yield %>
+  </div>
   </body>
 </html>

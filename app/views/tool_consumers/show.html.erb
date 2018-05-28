@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tool_consumer.name %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @tool_consumer.key %>
+</p>
+
+<p>
+  <strong>Secret:</strong>
+  <%= @tool_consumer.secret %>
+</p>
+
+<%= link_to 'Edit', edit_tool_consumer_path(@tool_consumer) %> |
+<%= link_to 'Back', tool_consumers_path %>
