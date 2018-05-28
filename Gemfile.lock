@@ -44,6 +44,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (8.5.0)
       execjs
+    bcrypt (3.1.12)
     bcrypt (3.1.12-x86-mingw32)
     bindata (2.4.3)
     bindex (0.5.0)
@@ -83,6 +84,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
+    ffi (1.9.23)
     ffi (1.9.23-x86-mingw32)
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
@@ -121,10 +123,13 @@ GEM
     multi_json (1.13.1)
     multipart-post (2.0.0)
     nio4r (2.3.1)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     oauth (0.5.4)
     orm_adapter (0.5.0)
+    pg (1.0.0)
     pg (1.0.0-x86-mingw32)
     popper_js (1.12.9)
     public_suffix (3.0.2)
@@ -216,6 +221,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
@@ -243,4 +249,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
