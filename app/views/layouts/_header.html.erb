@@ -1,5 +1,6 @@
+<!--TODO FIX this hardcoding, strings and style-->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="background-color: #BBDEFB !important">
-  <a class="navbar-brand" href="#"><%= image_tag 'Thumbnail.png' %></a>
+  <a class="navbar-brand" href="#"><%= image_tag 'favicon.png', width: 35, height: 35, style: 'margin-bottom: 6px' %><%= image_tag 'Thumbnail.png' %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,24 +13,25 @@
       <li class="nav-item">
         <%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %></li>
       </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
       <% if admin_signed_in? %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropown-login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_admin.email %>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropown-login">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
             <%= link_to destroy_admin_session_path, class: 'dropdown-item', :method => :delete do %>
               Log-out <i class="far fa-frown"></i>
             <% end %>
           </div>
-        </li>
+        </div>
       <% end %>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
     </form>
   </div>
 </nav>
