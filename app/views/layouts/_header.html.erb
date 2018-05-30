@@ -1,7 +1,9 @@
 <!--TODO FIX this hardcoding, strings and style-->
 <div class="page-wrapper-header">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="#"><%= image_tag 'favicon.png', width: 35, height: 35, style: 'margin-bottom: 6px' %><%= image_tag 'Thumbnail.png' %></a>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag 'favicon.png', width: 35, height: 35, style: 'margin-bottom: 6px' %><%= image_tag 'Thumbnail.png' %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,7 +33,15 @@
               <% end %>
             </div>
           </div>
+        <% else %>
+          <%= link_to new_admin_session_path do %>
+            <button class="btn btn-primary" type="button">
+              <span class="fas fa-sign-in-alt mr-2 ml-2"></span>
+              Log in
+            </button>
+          <% end %>
         <% end %>
+
 
       </form>
     </div>
