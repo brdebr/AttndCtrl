@@ -1,7 +1,7 @@
 <h1>Timetables</h1>
 
-<table>
-  <thead>
+<table class="table table-hover mt-3">
+  <thead class="thead-light">
     <tr>
       <th>Name</th>
       <th colspan="3"></th>
@@ -12,9 +12,17 @@
     <% @timetables.each do |timetable| %>
       <tr>
         <td><%= timetable.name %></td>
-        <td><%= link_to 'Show', timetable %></td>
-        <td><%= link_to 'Edit', edit_timetable_path(timetable) %></td>
-        <td><%= link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-right pr-4">
+          <%= link_to timetable do %>
+            <span class="fas fa-eye mr-3"></span>
+          <% end %>
+          <%= link_to edit_timetable_path(timetable) do %>
+            <span class="fas fa-edit mr-3 text-info"></span>
+          <% end %>
+          <%= link_to timetable, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="fas fa-trash-alt mr-3 text-danger"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +30,6 @@
 
 <br>
 
-<%= link_to 'New Timetable', new_timetable_path %>
+<%= link_to new_timetable_path do %>
+  <button type="button" class="btn btn-success"><i class="fas fa-plus-square text-white mr-3"></i>New Timetable</button>
+<% end %>

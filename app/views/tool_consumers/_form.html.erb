@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :tool_consumer_name %>
+  <div class="field form-group row">
+    <%= form.label :name, class: 'col-sm-2 col-form-label' %>
+    <%= form.text_field :name, id: :tool_consumer_name, class: 'col-sm-3' %>
   </div>
 
-  <div class="field">
-    <%= form.label :key %>
-    <%= form.text_field :key, id: :tool_consumer_key %>
+  <div class="field form-group row">
+    <%= form.label :key, class: 'col-sm-2 col-form-label' %>
+    <%= form.text_field :key, id: :tool_consumer_key, class: 'col-sm-3' %>
   </div>
 
-  <div class="field">
-    <%= form.label :secret %>
-    <%= form.text_field :secret, id: :tool_consumer_secret %>
+  <div class="field form-group row">
+    <%= form.label :secret, class: 'col-sm-2 col-form-label' %>
+    <%= form.text_field :secret, id: :tool_consumer_secret, class: 'col-sm-3' %>
   </div>
 
   <div class="actions">
