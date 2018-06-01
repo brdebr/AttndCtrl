@@ -1,8 +1,10 @@
+require 'ffaker'
+
 FactoryBot.define do
 
   factory :admin do
-    email "john@doe.com"
-    password  "asdzxc"
+    email  { FFaker::Internet.free_email }
+    password "asdzxc"
     password_confirmation "asdzxc"
   end
 
