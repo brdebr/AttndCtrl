@@ -9,7 +9,7 @@
     <div class="page-wrapper">
       <div class="container">
 
-        <% if notice %>
+        <% unless notice.nil? %>
 
           <div class="alert alert-primary alert-dismissible fade show" role="alert">
             <strong>Information!</strong> <%= notice %>
@@ -20,7 +20,7 @@
 
         <% end %>
 
-        <% if alert %>
+        <% unless alert.nil? %>
 
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Error!</strong> <%= alert %>
