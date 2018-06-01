@@ -69,7 +69,7 @@ group :development, :test do
   # Use this to generate random data, have lots of useful methods.
   gem 'ffaker', '~> 2.2'
   # Use this to create objects with random parameters easily, combined with ffaker
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
   # Use this gem to clean database between tests to avoid duplicate issues
   gem "database_cleaner"
 
