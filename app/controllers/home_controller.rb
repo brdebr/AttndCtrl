@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_admin!, :except => [:main]
+  before_action :authenticate_admin!, except: [:main]
 
   def main
 

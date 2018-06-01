@@ -1,0 +1,40 @@
+$navbar-heigh : 75px;
+body {
+  padding-top: $navbar-heigh ;
+
+  background: -moz-linear-gradient(180deg, #689F38 0%, #C5E1A5 100%);
+  background: -webkit-linear-gradient(180deg, #689F38 0%, #C5E1A5 100%);
+  background: -ms-linear-gradient(180deg, #689F38 0%,#C5E1A5 100%);
+  background: linear-gradient(180deg, #689F38 0%, #C5E1A5 100%);
+
+  height: -webkit-fill-available;
+}
+
+.page-wrapper {
+  background-color: white;
+  width: 85%;
+  margin: 0 auto;
+  padding: 25px 20px;
+}
+
+.page-wrapper-header {
+  .navbar{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    .dropdown-menu{
+      right: 0;
+      left: auto;
+    }
+  }
+  width: 85%;
+  margin: 0 auto;
+  border-bottom: 15px solid #01588a;
+}
+
+footer.page-wrapper{
+  border-top: 15px solid #01588a;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
