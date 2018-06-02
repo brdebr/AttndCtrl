@@ -11,12 +11,13 @@ rvm:
   - 2.3.3
 
 before_script:
-  - "psql -c 'create database travis;' -U postgres"
+  - "cp config/database.travis.yml config/database.yml"
+  - "psql -c 'create database attndctrl_ci_test;' -U postgres"
   - "bundle exec rake db:migrate"
   - "bundle exec rake db:test:prepare"
 
 script:
-  - bundle exec rake ci:tests
+  - bundle exec rake spec
 
 cache: bundler
 
