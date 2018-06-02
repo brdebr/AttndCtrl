@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :timetables
   devise_for :admins
   root 'home#main'
 
   # Admins need to create a ToolConsumer object to authenticate the launch with the generated key/secret
-  resources :tool_consumers
+  resources :tool_consumers do
+    resources :timetables
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'dashboard', to: "home#dashboard"
