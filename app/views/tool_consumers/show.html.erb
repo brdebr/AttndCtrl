@@ -1,3 +1,7 @@
+<h3>Tool Consumer</h3>
+
+<hr>
+
 <p>
   <strong>Name:</strong>
   <%= @tool_consumer.name %>
@@ -15,9 +19,10 @@
 
 <hr>
 
-<h3>Timetables</h3>
+<h4>Timetables</h4>
 
 <table class="table table-hover mt-3">
+
   <thead class="thead-light">
     <tr>
       <th>
@@ -26,6 +31,7 @@
       <th class="text-right pr-4" colspan="3">Actions</th>
     </tr>
   </thead>
+
   <tbody>
     <% @tool_consumer.timetables.each do |timetable| %>
       <tr>
@@ -33,13 +39,25 @@
           <%= timetable.name %>
         </td>
         <td class="text-right pr-4">
-          Links PLACEHOLDER
+          <%= link_to timetable do %>
+            <span class="fas fa-eye mr-3"></span>
+          <% end %>
+          <%= link_to edit_timetable_path timetable do %>
+            <span class="fas fa-edit mr-3 text-info"></span>
+          <% end %>
+          <%= link_to timetable, method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <span class="fas fa-trash-alt mr-3 text-danger"></span>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 
 </table>
+<%= link_to new_tool_consumer_timetable_path @tool_consumer do %>
+  <button type="button" class="btn btn-success"><i class="fas fa-plus-square text-white mr-3"></i>New Timetable</button>
+<% end %>
+<hr>
 
 <%= link_to 'Edit', edit_tool_consumer_path(@tool_consumer) %> |
 <%= link_to 'Back', tool_consumers_path %>

@@ -71,6 +71,6 @@ class ToolConsumersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_consumer_params
-      params.require(:tool_consumer).permit(:name, :key, :secret)
+      params.require(:tool_consumer).permit(:name, :key, :secret, timetable_attributes: [:tool_consumer_id,:name])
     end
 end

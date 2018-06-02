@@ -1,5 +1,6 @@
-class TimetablesController < ApplicationController
+class ToolConsumers::TimetablesController < ApplicationController
   before_action :set_timetable, only: [:show, :edit, :update, :destroy]
+  before_action :set_tool_consumer
 
   # GET /timetables
   # GET /timetables.json
@@ -58,7 +59,7 @@ class TimetablesController < ApplicationController
   def destroy
     @timetable.destroy
     respond_to do |format|
-      format.html { redirect_to timetables_url, notice: 'Timetable was successfully destroyed.' }
+      format.html { redirect_to @tool_consumer, notice: 'Timetable was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,6 +68,14 @@ class TimetablesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_timetable
       @timetable = Timetable.find(params[:id])
+    end
+
+    def set_tool_consumer
+      if @timetable.nil?
+        @timetable = Timetable.new
+      else
+        @tool_consumer = ToolConsumer.find @timetable.tool_consumer.id
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
