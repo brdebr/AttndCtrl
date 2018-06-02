@@ -9,7 +9,7 @@ default: &default
   encoding: unicode
   username: openpg
   password: openpgpwd
-  host: 127.0.0.1
+  host: db
   port: 5432
   timeout: 5000
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
