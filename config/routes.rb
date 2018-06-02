@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Admins need to create a ToolConsumer object to authenticate the launch with the generated key/secret
   resources :tool_consumers do
-    resources :timetables
+    resources :timetables, controller: 'tool_consumers/timetables'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

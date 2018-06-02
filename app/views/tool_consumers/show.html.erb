@@ -13,5 +13,33 @@
   <%= @tool_consumer.secret %>
 </p>
 
+<hr>
+
+<h3>Timetables</h3>
+
+<table class="table table-hover mt-3">
+  <thead class="thead-light">
+    <tr>
+      <th>
+        Name
+      </th>
+      <th class="text-right pr-4" colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tool_consumer.timetables.each do |timetable| %>
+      <tr>
+        <td>
+          <%= timetable.name %>
+        </td>
+        <td class="text-right pr-4">
+          Links PLACEHOLDER
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
 <%= link_to 'Edit', edit_tool_consumer_path(@tool_consumer) %> |
 <%= link_to 'Back', tool_consumers_path %>
