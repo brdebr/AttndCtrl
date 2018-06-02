@@ -36,7 +36,7 @@ gem 'oauth', '~> 0.5.1'
 # Use IMS-LTI gem to handle various operations, like Oauth
 gem 'ims-lti', '~> 2.2', '>= 2.2.3'
 
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'wdm', '>= 0.1.0', platforms: [ :mingw, :x64_mingw]
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -72,6 +72,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Use this gem to clean database between tests to avoid duplicate issues
   gem "database_cleaner"
+  # Use this gem to autmatically launch the saved page copy resulting of the method 'save_and_open_page'
+  gem 'launchy'
 
   #<-- End Testing gems
 end

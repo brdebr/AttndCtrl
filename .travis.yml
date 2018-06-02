@@ -1,0 +1,29 @@
+# Setting up Travis CI:
+
+# 1. Go to https://travis-ci.org
+# 2. Click the Sign Up/Sign in with GitHub button and give Travis CI permission
+#    to access your GitHub repositories.
+# 3. Create a file like this one you're reading at `your-rails-app/.travis.yml`:
+
+language: ruby
+
+rvm:
+  - 2.3.3
+
+before_script:
+  - "psql -c 'create database travis;' -U postgres"
+  - "bundle exec rake db:migrate"
+  - "bundle exec rake db:test:prepare"
+
+script:
+  - bundle exec rake ci:tests
+
+cache: bundler
+
+services:
+  - postgresql
+addons:
+  postgresql: "9.4"
+
+notifications:
+  email: false
