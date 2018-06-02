@@ -3,22 +3,42 @@
   <%= render 'layouts/head' %>
 
   <body class="<%= controller_name %>-<%= action_name %>">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div class="container-fluid">
-    <ul>
-      <li><%= link_to 'Main', root_path %></li>
-      <li><%= link_to 'Dashboard', dashboard_path %></li>
-      <% if admin_signed_in? %>
-        <li>
-          <%= link_to destroy_admin_session_path , :method => :delete do %>
-            Log-out <i class="far fa-frown"></i>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
 
-      <%= yield %>
-  </div>
+    <%= render 'layouts/header' %>
+
+    <div class="page-wrapper">
+      <div class="container">
+
+        <% unless notice.nil? %>
+
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Information!</strong> <%= notice %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        <% end %>
+
+        <% unless alert.nil? %>
+
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> <%= alert %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        <% end %>
+
+          <%= yield %>
+
+      </div>
+    </div>
+
+    <%= render 'layouts/footer' %>
+
   </body>
+
+
 </html>

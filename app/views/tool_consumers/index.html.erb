@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Tool Consumers</h1>
 
-<table>
-  <thead>
+<table class="table table-hover mt-3">
+  <thead class="thead-light">
     <tr>
       <th>Name</th>
       <th>Key</th>
@@ -18,9 +16,17 @@
         <td><%= tool_consumer.name %></td>
         <td><%= tool_consumer.key %></td>
         <td><%= tool_consumer.secret %></td>
-        <td><%= link_to 'Show', tool_consumer %></td>
-        <td><%= link_to 'Edit', edit_tool_consumer_path(tool_consumer) %></td>
-        <td><%= link_to 'Destroy', tool_consumer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-right pr-4">
+          <%= link_to tool_consumer do %>
+            <span class="fas fa-eye mr-3"></span>
+          <% end %>
+          <%= link_to edit_tool_consumer_path(tool_consumer) do %>
+            <span class="fas fa-edit mr-3 text-info"></span>
+          <% end %>
+          <%= link_to tool_consumer, method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <span class="fas fa-trash-alt mr-3 text-danger"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Tool Consumer', new_tool_consumer_path %>
+<%= link_to new_tool_consumer_path do %>
+  <button type="button" class="btn btn-success"><i class="fas fa-plus-square text-white mr-3"></i>New Tool Consumer</button>
+<% end %>

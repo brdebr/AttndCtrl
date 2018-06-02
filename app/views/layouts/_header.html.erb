@@ -1,0 +1,57 @@
+<!--TODO FIX this hardcoding, strings and style-->
+<div class="page-wrapper-header">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag 'favicon.png', width: 35, height: 35, style: 'margin-bottom: 6px' %><%= image_tag 'Thumbnail.png' %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTop">
+      <ul class="navbar-nav ml-auto mr-5">
+        <li class="nav-item <%= current_active_page?(root_path) %>">
+          <%= link_to 'Home', root_path, class: 'nav-link' %>
+        </li>
+        <% if admin_signed_in? %>
+          <li class="nav-item <%= current_active_page?(dashboard_path) %>">
+            <%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %></li>
+          </li>
+          <li class="nav-item <%= current_active_page?(tool_consumers_path) %>">
+            <%= link_to 'Tool consumers', tool_consumers_path, class: 'nav-link' %></li>
+          </li>
+          <li class="nav-item <%= current_active_page?(timetables_path) %>">
+            <%= link_to 'Timetables', timetables_path, class: 'nav-link' %></li>
+          </li>
+        <% end %>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <% if admin_signed_in? %>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_admin.email %>
+            </button>
+            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <%= link_to destroy_admin_session_path, class: 'dropdown-item', :method => :delete do %>
+                Log-out <i class="far fa-frown"></i>
+              <% end %>
+            </div>
+          </div>
+        <% else %>
+          <%= link_to new_admin_session_path do %>
+            <button class="btn btn-primary pl-3" type="button">
+              Log in
+              <span class="fas fa-sign-in-alt ml-2 mr-1"></span>
+            </button>
+          <% end %>
+        <% end %>
+
+
+      </form>
+    </div>
+  </nav>
+</div>

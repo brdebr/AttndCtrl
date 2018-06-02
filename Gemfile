@@ -36,7 +36,7 @@ gem 'oauth', '~> 0.5.1'
 # Use IMS-LTI gem to handle various operations, like Oauth
 gem 'ims-lti', '~> 2.2', '>= 2.2.3'
 
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'wdm', '>= 0.1.0', platforms: [ :mingw, :x64_mingw]
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -53,9 +53,29 @@ gem 'hirb'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  #--> Testing gems
+
+  # Main gem that bundles a lot of testing features,
+  # besides this gem I'll add a bunch of usefull testing tools
+  gem 'rspec-rails', '~> 3.7'
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  # TODO Integrate 'Better Errors' gem (not trying now because may have conflicts with current gems)
+
+  # Use this to generate random data, have lots of useful methods.
+  gem 'ffaker', '~> 2.2'
+  # Use this to create objects with random parameters easily, combined with ffaker
+  gem 'factory_bot_rails'
+  # Use this gem to clean database between tests to avoid duplicate issues
+  gem "database_cleaner"
+  # Use this gem to autmatically launch the saved page copy resulting of the method 'save_and_open_page'
+  gem 'launchy'
+
+  #<-- End Testing gems
 end
 
 group :development do
