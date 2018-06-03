@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180527190917) do
+ActiveRecord::Schema.define(version: 20180603210723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20180527190917) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "timetable_units", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "week_day"
+    t.time "start_time"
+    t.time "finish_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "timetable_id"
+    t.index ["timetable_id"], name: "index_timetable_units_on_timetable_id"
+  end
+
   create_table "timetables", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -50,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180527190917) do
     t.index ["admin_id"], name: "index_tool_consumers_on_admin_id"
   end
 
+  add_foreign_key "timetable_units", "timetables"
   add_foreign_key "timetables", "tool_consumers"
   add_foreign_key "tool_consumers", "admins"
 end
