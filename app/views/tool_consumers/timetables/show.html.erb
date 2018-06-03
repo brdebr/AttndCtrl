@@ -1,7 +1,13 @@
+<h3>Timetable</h3>
+<hr>
 <p>
   <strong>Name:</strong>
   <%= @timetable.name %>
 </p>
+<hr>
 
+<div id="timetable-units-calendar">
+</div>
+<hr>
 <%= link_to 'Edit', edit_timetable_path(@timetable) %> |
 <%= link_to 'Back', @tool_consumer %>

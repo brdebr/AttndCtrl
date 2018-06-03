@@ -44,6 +44,10 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 # Fonts and icons, awesome but not that much
 gem 'font-awesome-sass', '~> 5.0.13'
+# Use this as the calendar plugin that will be used to manage TimetableUnits
+gem 'fullcalendar-rails'
+# Use this because fullcalendar requires it, but its really usefull to manage date/time data
+gem 'momentjs-rails'
 # Format querys as table for easier debugging using the console
 gem 'hirb'
 
@@ -64,7 +68,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 
-  # TODO Integrate 'Better Errors' gem (not trying now because may have conflicts with current gems)
+  # Use this to have a bunch of usefull tools for when things go wrong, because they will.
   gem 'better_errors', '~> 2.4'
   gem "binding_of_caller"
 
