@@ -1,3 +1,7 @@
+<h3>Tool Consumer</h3>
+
+<hr>
+
 <p>
   <strong>Name:</strong>
   <%= @tool_consumer.name %>
@@ -12,6 +16,60 @@
   <strong>Secret:</strong>
   <%= @tool_consumer.secret %>
 </p>
+
+<hr>
+
+<h4>Timetables</h4>
+
+<% if @tool_consumer.timetables.length > 0 %>
+  <hr>
+  <table class="table table-hover mt-3">
+
+    <thead class="thead-light">
+    <tr>
+      <th>
+        Name
+      </th>
+      <th class="text-right pr-4" colspan="3">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @tool_consumer.timetables.each do |timetable| %>
+      <tr>
+        <td>
+          <%= timetable.name %>
+        </td>
+        <td class="text-right pr-4">
+          <%= link_to timetable do %>
+            <span class="fas fa-eye mr-3"></span>
+          <% end %>
+          <%= link_to edit_timetable_path timetable do %>
+            <span class="fas fa-edit mr-3 text-info"></span>
+          <% end %>
+          <%= link_to timetable, method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <span class="fas fa-trash-alt mr-3 text-danger"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+<% else %>
+  <hr>
+  <p>
+    No Timetables to show <i class="far fa-frown text-info"></i><br/>
+    Create one with the " <i class="fas fa-plus-square text-success"></i> " button.<br/>
+  </p>
+  <hr>
+<% end %>
+
+
+<%= link_to new_tool_consumer_timetable_path @tool_consumer do %>
+  <button type="button" class="btn btn-success"><i class="fas fa-plus-square text-white mr-3"></i>New Timetable</button>
+<% end %>
+<hr>
 
 <%= link_to 'Edit', edit_tool_consumer_path(@tool_consumer) %> |
 <%= link_to 'Back', tool_consumers_path %>

@@ -65,6 +65,8 @@ group :development, :test do
   gem 'selenium-webdriver'
 
   # TODO Integrate 'Better Errors' gem (not trying now because may have conflicts with current gems)
+  gem 'better_errors', '~> 2.4'
+  gem "binding_of_caller"
 
   # Use this to generate random data, have lots of useful methods.
   gem 'ffaker', '~> 2.2'

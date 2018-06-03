@@ -1,4 +1,4 @@
-<%= form_with(model: timetable, local: true) do |form| %>
+<%= form_with(model: timetable, url: (timetable.new_record? ? [@tool_consumer,timetable] : timetable), local: true) do |form| %>
   <% if timetable.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(timetable.errors.count, "error") %> prohibited this timetable from being saved:</h2>
@@ -10,15 +10,9 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field form-group row">
     <%= form.label :name, class: 'col-sm-2 col-form-label' %>
     <%= form.text_field :name, id: :timetable_name , class: 'col-sm-3'%>
-  </div>
-
-  <div class="field form-group row">
-    <%= form.label :tool_consumer, class: 'col-sm-2 col-form-label' %>
-    <%= collection_select :timetable, :tool_consumer_id, @tool_consumers, :id, :name, {}, {multiple: false, class: 'col-sm-3'}  %>
   </div>
 
   <div class="actions">

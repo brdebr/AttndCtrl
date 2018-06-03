@@ -4,5 +4,5 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :tool_consumers
+  has_many :tool_consumers, dependent: :delete_all
 end
