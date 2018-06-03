@@ -1,0 +1,28 @@
+# PostgreSQL
+#   gem install pg
+#
+#   Ensure the PostgreSQL gem is defined in your Gemfile
+#   gem 'pg'
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  timeout: 5000
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: attndctrl_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: attndctrl_ci_test
+
+production:
+  <<: *default
+  database: attnd-ctrl-lti_production
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>

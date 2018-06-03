@@ -1,6 +1,9 @@
 # Attendance Control - LTI
+[![Build Status](https://travis-ci.com/brdebr/AttndCtrl.svg?token=p7E7v9WFgCxSPq9NgxfP&branch=master)](https://travis-ci.com/brdebr/AttndCtrl)
+
 Web app to manage the attendance of students from an LMS.  
 Developed using `Ruby on Rails` and the standard `IMS-LTI`.
+
 
 #### This project is heavily documented using the [wiki](https://github.com/brdebr/AttndCtrl/wiki)
 

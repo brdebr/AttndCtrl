@@ -1,29 +1,49 @@
 <h1>Tool Consumers</h1>
+<hr>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Key</th>
-      <th>Secret</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if @tool_consumers.length > 0  %>
 
-  <tbody>
-    <% @tool_consumers.each do |tool_consumer| %>
+  <table class="table table-hover mt-3">
+    <thead class="thead-light">
       <tr>
-        <td><%= tool_consumer.name %></td>
-        <td><%= tool_consumer.key %></td>
-        <td><%= tool_consumer.secret %></td>
-        <td><%= link_to 'Show', tool_consumer %></td>
-        <td><%= link_to 'Edit', edit_tool_consumer_path(tool_consumer) %></td>
-        <td><%= link_to 'Destroy', tool_consumer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Key</th>
+        <th>Secret</th>
+        <th class="text-right pr-4" colspan="3">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @tool_consumers.each do |tool_consumer| %>
+        <tr>
+          <td><%= tool_consumer.name %></td>
+          <td><%= tool_consumer.key %></td>
+          <td><%= tool_consumer.secret %></td>
+          <td class="text-right pr-4">
+            <%= link_to tool_consumer do %>
+              <span class="fas fa-eye mr-3"></span>
+            <% end %>
+            <%= link_to edit_tool_consumer_path(tool_consumer) do %>
+              <span class="fas fa-edit mr-3 text-info"></span>
+            <% end %>
+            <%= link_to tool_consumer, method: :delete, data: {confirm: 'Are you sure?'} do %>
+              <span class="fas fa-trash-alt mr-3 text-danger"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Tool Consumer', new_tool_consumer_path %>
+<% else %>
+<% # TODO refactor this to a Concern or Helper %>
+  <p>
+    No Tool Consumers to show <i class="far fa-frown text-info"></i><br/>
+    Create one with the " <i class="fas fa-plus-square text-success"></i> " button.<br/>
+  </p>
+<% end %>
+<hr>
+
+<%= link_to new_tool_consumer_path do %>
+  <button type="button" class="btn btn-success"><i class="fas fa-plus-square text-white mr-3"></i>New Tool Consumer</button>
+<% end %>
