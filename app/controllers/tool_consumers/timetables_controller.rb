@@ -16,7 +16,10 @@ class ToolConsumers::TimetablesController < ApplicationController
   # GET /timetables/new
   def new
     @timetable = Timetable.new
-    @tool_consumer = ToolConsumer.find params['tool_consumer_id']
+    @tool_consumer = ToolConsumer.find_by id:params['tool_consumer_id'], admin:current_admin
+    if @tool_consumer.nil?
+      render file: 'public/404', status: :not_found
+    end
   end
 
   # GET /timetables/1/edit
@@ -27,7 +30,10 @@ class ToolConsumers::TimetablesController < ApplicationController
   # POST /timetables.json
   def create
     @timetable = Timetable.new(timetable_params)
-    @timetable.tool_consumer = ToolConsumer.find params['tool_consumer_id']
+    @timetable.tool_consumer = ToolConsumer.find_by id:params['tool_consumer_id'], admin:current_admin
+    if @timetable.tool_consumer.nil?
+      render file: 'public/404', status: :not_found
+    end
 
     respond_to do |format|
       if @timetable.save
@@ -71,7 +77,10 @@ class ToolConsumers::TimetablesController < ApplicationController
     end
 
     def set_tool_consumer
-      @tool_consumer = ToolConsumer.find @timetable.tool_consumer.id
+      @tool_consumer = ToolConsumer.find_by id:@timetable.tool_consumer.id, admin:current_admin
+      if @tool_consumer.nil?
+        render file: 'public/404', status: :not_found
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

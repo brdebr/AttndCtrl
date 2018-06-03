@@ -66,7 +66,11 @@ class ToolConsumersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tool_consumer
-      @tool_consumer = ToolConsumer.find(params[:id])
+      @tool_consumer = ToolConsumer.find_by id:params[:id], admin:current_admin
+      # TODO refactor this to a Concern, it will be used a lot
+      if @tool_consumer.nil?
+        render file: 'public/404', status: :not_found
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

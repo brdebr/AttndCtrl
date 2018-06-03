@@ -63,10 +63,7 @@ RSpec.describe "Tool consumers management" do
 
     click_on 'Tool consumers'
 
-    expect(page).to have_text"Name"
-    expect(page).to have_text"Key"
-    expect(page).to have_text"Secret"
-    expect(page).to have_text"Actions"
+    expect(page).to have_text"No Tool Consumers to show"
 
     click_link 'New Tool Consumer'
 
