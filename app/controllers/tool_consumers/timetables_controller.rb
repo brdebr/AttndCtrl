@@ -1,6 +1,6 @@
 class ToolConsumers::TimetablesController < ApplicationController
   before_action :set_timetable, only: [:show, :edit, :update, :destroy]
-  before_action :set_tool_consumer
+  before_action :set_tool_consumer, except: [:new, :create]
 
   # GET /timetables
   # GET /timetables.json
@@ -16,22 +16,22 @@ class ToolConsumers::TimetablesController < ApplicationController
   # GET /timetables/new
   def new
     @timetable = Timetable.new
-    @tool_consumers = ToolConsumer.all
+    @tool_consumer = ToolConsumer.find params['tool_consumer_id']
   end
 
   # GET /timetables/1/edit
   def edit
-    @tool_consumers = ToolConsumer.all
   end
 
   # POST /timetables
   # POST /timetables.json
   def create
     @timetable = Timetable.new(timetable_params)
+    @timetable.tool_consumer = ToolConsumer.find params['tool_consumer_id']
 
     respond_to do |format|
       if @timetable.save
-        format.html { redirect_to @timetable, notice: 'Timetable was successfully created.' }
+        format.html { redirect_to @timetable.tool_consumer, notice: 'Timetable was successfully created.' }
         format.json { render :show, status: :created, location: @timetable }
       else
         format.html { render :new }
@@ -71,15 +71,11 @@ class ToolConsumers::TimetablesController < ApplicationController
     end
 
     def set_tool_consumer
-      if @timetable.nil?
-        @timetable = Timetable.new
-      else
-        @tool_consumer = ToolConsumer.find @timetable.tool_consumer.id
-      end
+      @tool_consumer = ToolConsumer.find @timetable.tool_consumer.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def timetable_params
-      params.require(:timetable).permit(:name,:tool_consumer_id)
+      params.require(:timetable).permit(:name)
     end
 end
