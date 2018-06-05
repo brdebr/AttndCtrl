@@ -50,6 +50,8 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 # Format querys as table for easier debugging using the console
 gem 'hirb'
+# Use this gem to load data from rails into Ruby.
+gem 'gon', '~> 6.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

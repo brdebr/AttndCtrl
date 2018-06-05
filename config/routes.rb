@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :timetables, controller: 'tool_consumers/timetables', shallow: true
   end
 
+  resources :timetable_units
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'dashboard', to: "home#dashboard"
   # LTI launch (responds to get and post)

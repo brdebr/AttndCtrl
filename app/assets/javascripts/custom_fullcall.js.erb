@@ -1,0 +1,44 @@
+var initialize_calendar
+initialize_calendar = function () {
+    $('body.timetables-show').find('#timetable-units-calendar').each(function () {
+        var calendar = $(this);
+        calendar.fullCalendar({
+            weekends: false,
+            defaultView: 'agendaWeek',
+            header: {
+                left: 'prev, next',
+                center: '',
+                right: 'listWeek,agendaWeek'
+            },
+            selectable: true,
+            nowIndicator: true,
+            selectHelper: true,
+            allDaySlot: false,
+            minTime: "05:00:00",
+            maxTime: "24:00:00",
+            businessHours: {
+                dow: [1, 2, 3, 4, 5],
+                start: '07:00',
+                end: '22:00',
+            },
+            eventSources: [
+                {
+                    url: '/timetable_units.json',
+                    error: function () {
+                        alert("error");
+                    },
+                    success: function () {
+                        console.log("successfully loaded");
+                    }
+                }
+            ],
+            height: 700,
+            slotMinutes: 30,
+            themeSystem:"bootstrap4"
+        });
+    });
+    console.log(gon.timetable_u)
+}
+$(document).on('turbolinks:load', initialize_calendar);
+
+
