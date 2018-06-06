@@ -52,6 +52,8 @@ gem 'momentjs-rails'
 gem 'hirb'
 # Use this gem to load data from rails into Ruby.
 gem 'gon', '~> 6.2'
+# Use this gem to have access cool Js datepicker
+gem 'bootstrap4-datetime-picker-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

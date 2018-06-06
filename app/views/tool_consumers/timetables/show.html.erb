@@ -1,4 +1,4 @@
-<h3><%= link_to 'Tool Consumers', tool_consumers_url %> / <%= link_to @tool_consumer do %>Tool consumer #<%= @tool_consumer.id %> <% end %>/ Timetable # <%= @timetable.id %></h3>
+<h3><%= link_to 'Tool Consumers', tool_consumers_url %> / <%= link_to @tool_consumer do %>Tool consumer # <%= @tool_consumer.id %> <% end %>/ Timetable # <%= @timetable.id %></h3>
 <hr>
 <p>
   <strong>Name:</strong>
@@ -11,3 +11,84 @@
 <hr>
 <%= link_to 'Edit', edit_timetable_path(@timetable) %> |
 <%= link_to 'Back', @tool_consumer %>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Create new event
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create new lesson period</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model:@timetable_u, remote:true) do |tm_u| %>
+
+          <div class="form-row">
+
+
+            <div class="form-group col-md-6">
+              <%= tm_u.label :start_time %>
+                <div class="form-group" style="padding-left: 0px">
+                  <div class="input-group date" id="timepicker_start" data-target-input="nearest">
+                    <%= tm_u.text_field :start_time, class: 'form-control datetimepicker-input', data: {target:'#timepicker_start'} %>
+                    <div class="input-group-append" data-target="#timepicker_start" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fas fa-clock text-success"></i></div>
+                    </div>
+                  </div>
+                </div>
+              <script type="text/javascript">
+                  $(function () {
+                      $('#timepicker_start').datetimepicker({
+                          format: 'LT'
+                      });
+                  });
+              </script>
+            </div>
+
+            <div class="form-group col-md-6">
+              <%= tm_u.label :finish_time %>
+              <div class="form-group" style="padding-left: 0px">
+                <div class="input-group date" id="timepicker_end" data-target-input="nearest">
+                  <%= tm_u.text_field :finish_time, class: 'form-control datetimepicker-input', data: {target: '#timepicker_end'} %>
+                  <div class="input-group-append" data-target="#timepicker_end" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fas fa-clock text-danger"></i></div>
+                  </div>
+                </div>
+              </div>
+              <script type="text/javascript">
+                  $(function () {
+                      $('#timepicker_end').datetimepicker({
+                          format: 'LT'
+                      });
+                  });
+              </script>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <%= tm_u.label :name %>
+            <%= tm_u.text_field :name, class:"form-control", placeholder:"Name" %>
+          </div>
+
+          <div class="form-group">
+            <%= tm_u.label :description %>
+            <%= tm_u.text_area :description, class: "form-control", placeholder: "Description" %>
+          </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+        <% end %>
+    </div>
+  </div>
+</div>
