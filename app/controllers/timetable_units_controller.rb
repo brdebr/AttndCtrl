@@ -3,7 +3,7 @@ class TimetableUnitsController < ApplicationController
   # GET /timetable_us
   # GET /timetable_us.json
   def index
-    @timetable_u = TimetableUnit.all
+    @timetable_u = TimetableUnit.where timetable_id:params['timetable_id']
 
     respond_to do |format|
       format.html

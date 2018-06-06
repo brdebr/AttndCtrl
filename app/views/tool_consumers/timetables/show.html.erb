@@ -27,7 +27,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with(model:@timetable_u, remote:true) do |tm_u| %>
+        <%= form_with(model:@timetable_u, url: (@timetable_u.new_record? ? [@timetable, @timetable_u] : @timetable_u) , remote:true) do |tm_u| %>
 
           <div class="form-row">
 
@@ -36,7 +36,7 @@
               <%= tm_u.label :start_time %>
                 <div class="form-group" style="padding-left: 0px">
                   <div class="input-group date" id="timepicker_start" data-target-input="nearest">
-                    <%= tm_u.text_field :start_time, class: 'form-control datetimepicker-input', data: {target:'#timepicker_start'} %>
+                    <%= tm_u.text_field :start_time, class: 'form-control datetimepicker-input', data: {target:'#timepicker_start'}, placeholder: "Start" %>
                     <div class="input-group-append" data-target="#timepicker_start" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fas fa-clock text-success"></i></div>
                     </div>
@@ -55,7 +55,7 @@
               <%= tm_u.label :finish_time %>
               <div class="form-group" style="padding-left: 0px">
                 <div class="input-group date" id="timepicker_end" data-target-input="nearest">
-                  <%= tm_u.text_field :finish_time, class: 'form-control datetimepicker-input', data: {target: '#timepicker_end'} %>
+                  <%= tm_u.text_field :finish_time, class: 'form-control datetimepicker-input', data: {target: '#timepicker_end'}, placeholder: "End" %>
                   <div class="input-group-append" data-target="#timepicker_end" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fas fa-clock text-danger"></i></div>
                   </div>

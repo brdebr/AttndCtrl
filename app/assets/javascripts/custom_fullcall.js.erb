@@ -2,6 +2,10 @@ var initialize_calendar
 initialize_calendar = function () {
     $('body.timetables-show').find('#timetable-units-calendar').each(function () {
         var calendar = $(this);
+        var timetable_id = 0
+        if (gon.timetable_id != null) {
+            timetable_id = gon.timetable_id
+        }
         calendar.fullCalendar({
             weekends: false,
             defaultView: 'agendaWeek',
@@ -24,7 +28,7 @@ initialize_calendar = function () {
             },
             eventSources: [
                 {
-                    url: '/timetable_units.json',
+                    url: '/timetable/'+timetable_id+'/timetable_units.json',
                     error: function () {
                         alert("error");
                     },
@@ -38,7 +42,6 @@ initialize_calendar = function () {
             themeSystem:"bootstrap4"
         });
     });
-    console.log(gon.timetable_u)
 }
 $(document).on('turbolinks:load', initialize_calendar);
 
