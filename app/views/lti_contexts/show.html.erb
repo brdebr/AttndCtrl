@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lti:</strong>
+  <%= @lti_context.lti_id %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @lti_context.label %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lti_context.title %>
+</p>
+
+<%= link_to 'Edit', edit_lti_context_path(@lti_context) %> |
+<%= link_to 'Back', lti_contexts_path %>

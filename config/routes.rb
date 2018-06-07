@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lti_contexts
   resources :lti_users
   devise_for :admins
   root 'home#main'

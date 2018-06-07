@@ -1,0 +1,32 @@
+<%= form_with(model: lti_context, local: true) do |form| %>
+  <% if lti_context.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lti_context.errors.count, "error") %> prohibited this lti_context from being saved:</h2>
+
+      <ul>
+      <% lti_context.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :lti_id %>
+    <%= form.number_field :lti_id, id: :lti_context_lti_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :label %>
+    <%= form.text_field :label, id: :lti_context_label %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :lti_context_title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

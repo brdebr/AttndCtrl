@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lti Contexts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lti</th>
+      <th>Label</th>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lti_contexts.each do |lti_context| %>
+      <tr>
+        <td><%= lti_context.lti_id %></td>
+        <td><%= lti_context.label %></td>
+        <td><%= lti_context.title %></td>
+        <td><%= link_to 'Show', lti_context %></td>
+        <td><%= link_to 'Edit', edit_lti_context_path(lti_context) %></td>
+        <td><%= link_to 'Destroy', lti_context, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lti Context', new_lti_context_path %>
