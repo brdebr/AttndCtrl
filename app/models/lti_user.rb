@@ -1,0 +1,2 @@
+class LtiUser < ApplicationRecord
+end
