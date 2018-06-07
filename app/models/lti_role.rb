@@ -1,0 +1,2 @@
+class LtiRole < ApplicationRecord
+end
