@@ -1,3 +1,6 @@
+<%= content_for :no_turbolinks_tag do %>
+  <meta name="turbolinks-visit-control" content="reload">
+<% end %>
 <h3><%= link_to 'Tool Consumers', tool_consumers_url %> / <%= link_to @tool_consumer do %>Tool consumer # <%= @tool_consumer.id %> <% end %>/ Timetable # <%= @timetable.id %></h3>
 <hr>
 <p>
@@ -12,36 +15,36 @@
 <%= link_to 'Edit', edit_timetable_path(@timetable) %> |
 <%= link_to 'Back', @tool_consumer %>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Create new event
-</button>
-
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createEventModal">-->
+<!--  Create new event-->
+<!--</button>-->
+<div id="timetable_unit-modal"></div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create new lesson period</h5>
+        <h5 class="modal-title" id="createEventModalLabel">Create new lesson period</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with(model:@timetable_u, url: (@timetable_u.new_record? ? [@timetable, @timetable_u] : @timetable_u) , remote:true) do |tm_u| %>
+        <%= form_with(model:[@timetable,@new_timetable_u], remote:true ) do |tm_u| %>
 
           <div class="form-row">
-
+            <%= tm_u.hidden_field :week_day %>
 
             <div class="form-group col-md-6">
               <%= tm_u.label :start_time %>
-                <div class="form-group" style="padding-left: 0px">
-                  <div class="input-group date" id="timepicker_start" data-target-input="nearest">
-                    <%= tm_u.text_field :start_time, class: 'form-control datetimepicker-input', data: {target:'#timepicker_start'}, placeholder: "Start" %>
-                    <div class="input-group-append" data-target="#timepicker_start" data-toggle="datetimepicker">
-                      <div class="input-group-text"><i class="fas fa-clock text-success"></i></div>
-                    </div>
+              <div class="form-group" style="padding-left: 0px">
+                <div class="input-group date" id="timepicker_start" data-target-input="nearest">
+                  <%= tm_u.text_field :start_time, class: 'form-control datetimepicker-input', data: {target:'#timepicker_start'}, placeholder: "Start" %>
+                  <div class="input-group-append" data-target="#timepicker_start" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fas fa-clock text-success"></i></div>
                   </div>
                 </div>
+              </div>
               <script type="text/javascript">
                   $(function () {
                       $('#timepicker_start').datetimepicker({
@@ -83,12 +86,12 @@
           </div>
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+          </div>
+          <div class="modal-footer">
+            <%= tm_u.button 'Close', class:'btn btn-secondary', data: {dismiss:'modal'} %>
+            <%= tm_u.submit 'Send' ,class:'btn btn-primary' %>
+          </div>
         <% end %>
-    </div>
+        </div>
   </div>
 </div>

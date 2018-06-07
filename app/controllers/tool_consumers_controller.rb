@@ -16,6 +16,7 @@ class ToolConsumersController < ApplicationController
   # GET /tool_consumers/new
   def new
     @tool_consumer = ToolConsumer.new
+    @tool_consumer.secret = SecureRandom.base64(12)
   end
 
   # GET /tool_consumers/1/edit

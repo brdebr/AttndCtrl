@@ -11,10 +11,14 @@ class ToolConsumers::TimetablesController < ApplicationController
   # GET /timetables/1
   # GET /timetables/1.json
   def show
+    @new_timetable_u = TimetableUnit.new
+    @new_timetable_u.timetable = @timetable
+    gon.clear
     if TimetableUnit.find_by(timetable_id:@timetable).nil?
       @timetable_u = TimetableUnit.new
     else
       @timetable_u = TimetableUnit.find_by timetable_id:@timetable.id
+      @new_timetable_u = TimetableUnit.new
       gon.timetable_u = @timetable_u
     end
     gon.timetable_id = @timetable.id

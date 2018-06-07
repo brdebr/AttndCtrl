@@ -29,13 +29,17 @@ class TimetableUnitsController < ApplicationController
   # POST /timetable_us.json
   def create
     @timetable_u = TimetableUnit.new(timetable_u_params) ##
+    @timetable_u.timetable = Timetable.find params['timetable_id']
+    p @timetable
     respond_to do |format|
       if @timetable_u.save
+        format.html { redirect_to timetable_url id:@timetable_u.timetable}
         format.json { render :show, status: :created, location: @timetable_u }
       else
         format.json { render json: @timetable_u.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /timetable_us/1
@@ -64,7 +68,11 @@ class TimetableUnitsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_timetable_u
-    @timetable_u = TimetableUnit.find(params[:id])
+    @timetable_u = TimetableUnit.find params[:id]
+  end
+
+  def set_timetable
+    @timetable = Timetable.find params[:timetable_id]
   end
 
   def set_tool_consumer
@@ -76,7 +84,7 @@ class TimetableUnitsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def timetable_u_params
-    params.require(:timetable_u).permit(:name)
+    params.require(:timetable_unit).permit(:name,:start_time, :finish_time, :description,:week_day)
   end
 end
 

@@ -1,4 +1,14 @@
 var initialize_calendar
+var initialize_form
+
+initialize_form = function(start, end){
+    $('#timepicker_start').datetimepicker('date', start);
+    $('#timepicker_end').datetimepicker('date', end);
+    $('[name="timetable_unit[week_day]"]').val(start.format('d'));
+    $('#createEventModal').modal('show');
+    $('#timetable-units-calendar').fullCalendar('unselect')
+}
+
 initialize_calendar = function () {
     $('body.timetables-show').find('#timetable-units-calendar').each(function () {
         var calendar = $(this);
@@ -26,6 +36,7 @@ initialize_calendar = function () {
                 start: '07:00',
                 end: '22:00',
             },
+            select: initialize_form,
             eventSources: [
                 {
                     url: '/timetable/'+timetable_id+'/timetable_units.json',
