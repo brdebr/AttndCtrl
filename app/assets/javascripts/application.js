@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require moment
+//= require fullcalendar
+//= require tempusdominus-bootstrap-4.js
 //= require turbolinks
 //= require_tree .
