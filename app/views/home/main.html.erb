@@ -1,9 +1,13 @@
-<% if admin_signed_in? %>
-  <h1>This is a message for admins only</h1>
-  <h2>Welcome <%= current_admin.email %>!</h2>
-  <%=link_to dashboard_path do %>
-    <h3>Access your dashboard</h3>
+<div class="home-body text-center">
+  <% if admin_signed_in? %>
+    <h1>This is a message for admins only</h1>
+    <h2>Welcome <%= current_admin.email %>!</h2>
+    <%=link_to dashboard_path do %>
+      <h3>Access your dashboard</h3>
+    <% end %>
+    <%= image_tag 'agenda-book.jpg', width: 800 %>
+  <% else %>
+      <h1>This is the public page</h1>
+      <%= image_tag 'list-papers.jpg', width: 800 %>
   <% end %>
-<% else %>
-  <h1>This is the public page</h1>
-<% end %>
+</div>
