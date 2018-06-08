@@ -1,31 +1,55 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Lti Contexts</h1>
 
-<table>
-  <thead>
+<% if @lti_contexts.length > 0 %>
+  <hr>
+  <table class="table table-hover mt-3">
+
+    <thead class="thead-light">
     <tr>
-      <th>Lti</th>
       <th>Label</th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th class="text-right pr-4" colspan="3">Actions</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @lti_contexts.each do |lti_context| %>
       <tr>
-        <td><%= lti_context.lti_id %></td>
-        <td><%= lti_context.label %></td>
-        <td><%= lti_context.title %></td>
-        <td><%= link_to 'Show', lti_context %></td>
-        <td><%= link_to 'Edit', edit_lti_context_path(lti_context) %></td>
-        <td><%= link_to 'Destroy', lti_context, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= lti_context.lti_id %>
+        </td>
+        <td>
+          <%= lti_context.label %>
+        </td>
+        <td>
+          <%= lti_context.title %>
+        </td>
+
+        <td class="text-right pr-4">
+          <%= link_to lti_context do %>
+            <span class="fas fa-eye mr-3"></span>
+          <% end %>
+          <%= link_to edit_lti_context_path lti_context do %>
+            <span class="fas fa-edit mr-3 text-info"></span>
+          <% end %>
+          <%= link_to lti_context, method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <span class="fas fa-trash-alt mr-3 text-danger"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
 
-<br>
-
-<%= link_to 'New Lti Context', new_lti_context_path %>
+  </table>
+<% else %>
+  <hr>
+  <p>
+    No Context to show <i class="far fa-frown text-info"></i><br/>
+    Create one with the " <i class="fas fa-plus-square text-success"></i> " button.<br/>
+  </p>
+  <hr>
+<% end %>
+<hr>
+<%= link_to new_lti_context_path do %>
+  <button type="button" class="btn btn-success"><i class="fas fa-plus-square text-white mr-3"></i>New LTI-Context</button>
+<% end %>

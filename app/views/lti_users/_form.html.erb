@@ -11,32 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name, id: :lti_user_full_name %>
+  <div class="field form-group row">
+    <%= form.label :full_name, 'Internal LTI-ID', class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :full_name, id: :lti_user_full_name, class: 'col-sm-3' %>
   </div>
 
-  <div class="field">
-    <%= form.label :given %>
-    <%= form.text_field :given, id: :lti_user_given %>
+  <div class="field form-group row">
+    <%= form.label :given, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :given, id: :lti_user_given, class: 'col-sm-3' %>
   </div>
 
-  <div class="field">
-    <%= form.label :family %>
-    <%= form.text_field :family, id: :lti_user_family %>
+  <div class="field form-group row">
+    <%= form.label :family, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :family, id: :lti_user_family, class: 'col-sm-3' %>
   </div>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, id: :lti_user_username %>
+  <div class="field form-group row">
+    <%= form.label :username, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :username, id: :lti_user_username, class: 'col-sm-3' %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :lti_user_email %>
+  <div class="field form-group row">
+    <%= form.label :email, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :email, id: :lti_user_email, class: 'col-sm-3' %>
   </div>
-
+  <hr>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-primary' %>
   </div>
+  <hr>
 <% end %>
