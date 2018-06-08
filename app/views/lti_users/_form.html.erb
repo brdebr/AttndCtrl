@@ -1,0 +1,43 @@
+<%= form_with(model: lti_user, local: true) do |form| %>
+  <% if lti_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lti_user.errors.count, "error") %> prohibited this lti_user from being saved:</h2>
+
+      <ul>
+      <% lti_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group row">
+    <%= form.label :full_name, 'Internal LTI-ID', class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :full_name, id: :lti_user_full_name, class: 'col-sm-3' %>
+  </div>
+
+  <div class="field form-group row">
+    <%= form.label :given, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :given, id: :lti_user_given, class: 'col-sm-3' %>
+  </div>
+
+  <div class="field form-group row">
+    <%= form.label :family, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :family, id: :lti_user_family, class: 'col-sm-3' %>
+  </div>
+
+  <div class="field form-group row">
+    <%= form.label :username, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :username, id: :lti_user_username, class: 'col-sm-3' %>
+  </div>
+
+  <div class="field form-group row">
+    <%= form.label :email, class: 'col-sm-2 col-form-label'  %>
+    <%= form.text_field :email, id: :lti_user_email, class: 'col-sm-3' %>
+  </div>
+  <hr>
+  <div class="actions">
+    <%= form.submit class:'btn btn-primary' %>
+  </div>
+  <hr>
+<% end %>

@@ -1,0 +1,2 @@
+class LtiContext < ApplicationRecord
+end

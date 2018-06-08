@@ -1,4 +1,5 @@
 class ToolConsumers::TimetablesController < ApplicationController
+  before_action :authenticate_admin!, except: :show
   before_action :set_timetable, only: [:show, :edit, :update, :destroy]
   before_action :set_tool_consumer, except: [:new, :create]
 
