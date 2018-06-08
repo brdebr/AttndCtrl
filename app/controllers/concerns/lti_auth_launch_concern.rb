@@ -31,14 +31,36 @@ module LtiAuthLaunchConcern
     # The provider request is valid
     # store the values you need from the LTI
     # here we're just tossing them into the session
-    session[:user_id] = params.require :user_id
-    session[:lis_person_name_full] = params.require :lis_person_name_full
+    @lti_user = LtiUser.find_by lti_id:params.require(:user_id)
 
-    # set variables for use by the template
-    @lis_person_name_full = session[:lis_person_name_full]
-    @tool_consumer = tc;
+    if @lti_user.nil?
+      @lti_user = LtiUser.create lti_id: params.require(:user_id),
+                                 full_name: params.require(:lis_person_name_full),
+                                 given: params['lis_person_name_given'],
+                                 family: params['lis_person_name_family'],
+                                 username: params['ext_user_username'],
+                                 email: params['lis_person_contact_email_primary']
+    end
 
-    return true;
+  @lti_context = LtiContext.find_or_create_by lti_id:params.require(:context_id)
+
+  if params['roles'].include? 'Instructor'
+    @lti_role = LtiRole.find_or_create_by name:'Instructor'
+  elsif params['roles'].include? 'Learner'
+    @lti_role = LtiRole.find_or_create_by name:'Learner'
+  end
+
+  @lti_user = @lti_user.first if @lti_user.class == Array
+  @lti_user.update lti_role:@lti_role
+
+  if @lti_context
+    @lti_context = LtiContext.update label:params['context_label'],
+                                     title:params['context_title']
+
+  end
+  @tool_consumer = tc
+
+    return true
   end
 
 end

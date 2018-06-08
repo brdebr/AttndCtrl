@@ -1,0 +1,59 @@
+var initialize_calendar
+var initialize_form
+
+initialize_form = function(start, end){
+    $('#timepicker_start').datetimepicker('date', start);
+    $('#timepicker_end').datetimepicker('date', end);
+    $('[name="timetable_unit[week_day]"]').val(start.format('d'));
+    $('#createEventModal').modal('show');
+    $('#timetable-units-calendar').fullCalendar('unselect')
+}
+
+initialize_calendar = function () {
+    $('body.timetables-show').find('#timetable-units-calendar').each(function () {
+        var calendar = $(this);
+        var timetable_id = 0
+        if (gon.timetable_id != null) {
+            timetable_id = gon.timetable_id
+        }
+        calendar.fullCalendar({
+            weekends: false,
+            defaultView: 'agendaWeek',
+            header: {
+                left: 'prev, next',
+                center: '',
+                right: 'listWeek,agendaWeek'
+            },
+            selectable: true,
+            nowIndicator: true,
+            selectHelper: true,
+            allDaySlot: false,
+            minTime: "05:00:00",
+            maxTime: "24:00:00",
+            unselectAuto: false,
+            businessHours: {
+                dow: [1, 2, 3, 4, 5],
+                start: '07:00',
+                end: '22:00',
+            },
+            select: initialize_form,
+            eventSources: [
+                {
+                    url: '/timetable/'+timetable_id+'/timetable_units.json',
+                    error: function () {
+                        alert("error");
+                    },
+                    success: function () {
+                        console.log("successfully loaded");
+                    }
+                }
+            ],
+            height: 700,
+            slotMinutes: 15,
+            themeSystem:"bootstrap4"
+        });
+    });
+}
+$(document).on('turbolinks:load', initialize_calendar);
+
+

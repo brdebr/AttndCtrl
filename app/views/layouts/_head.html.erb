@@ -2,8 +2,9 @@
   <title>AttndCtrl</title>
 
   <%= csrf_meta_tags %>
-
+  <%= yield :no_turbolinks_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= Gon::Base.render_data %>
   <%= favicon_link_tag 'favicon.png' %>
 </head>

@@ -1,4 +1,4 @@
-<h3>Tool Consumer</h3>
+<h3><%= link_to 'Tool Consumers', tool_consumers_path %> / Tool Consumer # <%= @tool_consumer.id %></h3>
 
 <hr>
 
@@ -65,7 +65,7 @@
   <hr>
 <% end %>
 
-
+<hr>
 <%= link_to new_tool_consumer_timetable_path @tool_consumer do %>
   <button type="button" class="btn btn-success"><i class="fas fa-plus-square text-white mr-3"></i>New Timetable</button>
 <% end %>
