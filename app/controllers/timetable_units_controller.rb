@@ -1,5 +1,5 @@
 class TimetableUnitsController < ApplicationController
-
+  before_action :authenticate_admin!, except: :index
   # GET /timetable_us
   # GET /timetable_us.json
   def index

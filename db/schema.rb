@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180607195057) do
+ActiveRecord::Schema.define(version: 20180608013852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20180607195057) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "lti_id"
+    t.bigint "lti_role_id"
+    t.index ["lti_role_id"], name: "index_lti_users_on_lti_role_id"
   end
 
   create_table "timetable_units", force: :cascade do |t|
@@ -87,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180607195057) do
     t.index ["admin_id"], name: "index_tool_consumers_on_admin_id"
   end
 
+  add_foreign_key "lti_users", "lti_roles"
   add_foreign_key "timetable_units", "timetables"
   add_foreign_key "timetables", "tool_consumers"
   add_foreign_key "tool_consumers", "admins"
