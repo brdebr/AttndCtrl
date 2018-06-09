@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @attendance.date %>
+</p>
+
+<p>
+  <strong>Timetable unit:</strong>
+  <%= @attendance.timetable_unit %>
+</p>
+
+<p>
+  <strong>Lti context:</strong>
+  <%= @attendance.lti_context %>
+</p>
+
+<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
+<%= link_to 'Back', attendances_path %>
