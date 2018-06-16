@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180609192403) do
+ActiveRecord::Schema.define(version: 20180616192032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20180609192403) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "attendance_students", force: :cascade do |t|
+    t.string "state"
+    t.string "notes"
+    t.bigint "lti_user_id"
+    t.bigint "attendance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attendance_id"], name: "index_attendance_students_on_attendance_id"
+    t.index ["lti_user_id"], name: "index_attendance_students_on_lti_user_id"
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -103,6 +114,8 @@ ActiveRecord::Schema.define(version: 20180609192403) do
     t.index ["admin_id"], name: "index_tool_consumers_on_admin_id"
   end
 
+  add_foreign_key "attendance_students", "attendances"
+  add_foreign_key "attendance_students", "lti_users"
   add_foreign_key "attendances", "lti_contexts"
   add_foreign_key "attendances", "timetable_units"
   add_foreign_key "lti_users", "lti_contexts"

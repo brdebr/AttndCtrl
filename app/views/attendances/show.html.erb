@@ -7,12 +7,12 @@
 
 <p>
   <strong>Timetable unit:</strong>
-  <%= @attendance.timetable_unit %>
+  <%= @attendance.timetable_unit.name %>
 </p>
 
 <p>
   <strong>Lti context:</strong>
-  <%= @attendance.lti_context %>
+  <%= @attendance.lti_context.label %>
 </p>
 
 <%= link_to 'Edit', edit_attendance_path(@attendance) %> |
