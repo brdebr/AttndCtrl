@@ -12,6 +12,8 @@ module LtiAuthLaunchConcern
     # The 'request' object is provided by Ruby on Rails and has many data about the request received from the user browser
     tc = ToolConsumer.find_by key:request.parameters['oauth_consumer_key']
 
+    @using_oauth = true
+
     if tc.present?
       authenticator = IMS::LTI::Services::MessageAuthenticator.new(request.url, request.request_parameters, tc.secret)
     else
@@ -63,7 +65,7 @@ module LtiAuthLaunchConcern
   @tool_consumer = tc
 
     return true
-    
+
   end
 
 end
