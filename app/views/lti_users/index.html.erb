@@ -9,6 +9,7 @@
       <th>Full name</th>
       <th>Username</th>
       <th>Email</th>
+      <th>Role</th>
       <th class="text-right pr-4" colspan="3">Actions</th>
     </tr>
     </thead>
@@ -24,6 +25,9 @@
         </td>
         <td>
           <%= lti_user.email %>
+        </td>
+        <td>
+          <%= lti_user.lti_role.name %>
         </td>
 
         <td class="text-right pr-4">
