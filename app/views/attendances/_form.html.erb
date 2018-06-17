@@ -13,17 +13,25 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.datetime_select :date, id: :attendance_date %>
+      <div class="form-group" style="padding-left: 0px">
+        <div class="input-group date" id="datepicker_attendance" data-target-input="nearest">
+          <%= form.text_field :date, class: 'form-control datetimepicker-input', data: {target: '#datepicker_attendance'}, placeholder: "Date" %>
+          <div class="input-group-append" data-target="#datepicker_attendance" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fas fa-clock text-success"></i></div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#datepicker_attendance').datetimepicker({
+              });
+          });
+      </script>
   </div>
 
   <div class="field">
     <%= form.label :timetable_unit_id %>
     <%= form.text_field :timetable_unit_id, id: :attendance_timetable_unit_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lti_context_id %>
-    <%= form.text_field :lti_context_id, id: :attendance_lti_context_id %>
   </div>
 
   <div class="actions">

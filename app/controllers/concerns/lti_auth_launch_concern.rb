@@ -30,7 +30,6 @@ module LtiAuthLaunchConcern
 
     # The provider request is valid
     # store the values you need from the LTI
-    # here we're just tossing them into the session
     @lti_user = LtiUser.find_by lti_id:params.require(:user_id)
 
     @lti_context = LtiContext.find_or_create_by lti_id:params.require(:context_id)
@@ -59,11 +58,12 @@ module LtiAuthLaunchConcern
   if @lti_context
     @lti_context = LtiContext.update label:params['context_label'],
                                      title:params['context_title']
-
   end
+
   @tool_consumer = tc
 
     return true
+    
   end
 
 end

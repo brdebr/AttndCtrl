@@ -26,6 +26,10 @@ class AttendancesController < ApplicationController
   def create
     @attendance = Attendance.new(attendance_params)
 
+    @attendance.timetable_unit.timetable.lti_context.lti_users.where(lti_role_id:2).each do |student|
+      AttendanceStudent.create attendance:@attendance, lti_user:student, state:'P'
+    end
+
     respond_to do |format|
       if @attendance.save
         format.html { redirect_to @attendance, notice: 'Attendance was successfully created.' }

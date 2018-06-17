@@ -7,7 +7,6 @@
     <tr>
       <th>Date</th>
       <th>Subject</th>
-      <th>LMS Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= attendance.date %></td>
         <td><%= attendance.timetable_unit.name %></td>
-        <td><%= attendance.lti_context.label %></td>
         <td><%= link_to 'Show', attendance %></td>
         <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
         <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>

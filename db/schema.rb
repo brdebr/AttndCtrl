@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616192032) do
+ActiveRecord::Schema.define(version: 20180617160117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,10 +46,8 @@ ActiveRecord::Schema.define(version: 20180616192032) do
   create_table "attendances", force: :cascade do |t|
     t.datetime "date"
     t.bigint "timetable_unit_id"
-    t.bigint "lti_context_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lti_context_id"], name: "index_attendances_on_lti_context_id"
     t.index ["timetable_unit_id"], name: "index_attendances_on_timetable_unit_id"
   end
 
@@ -116,7 +114,6 @@ ActiveRecord::Schema.define(version: 20180616192032) do
 
   add_foreign_key "attendance_students", "attendances"
   add_foreign_key "attendance_students", "lti_users"
-  add_foreign_key "attendances", "lti_contexts"
   add_foreign_key "attendances", "timetable_units"
   add_foreign_key "lti_users", "lti_contexts"
   add_foreign_key "lti_users", "lti_roles"
