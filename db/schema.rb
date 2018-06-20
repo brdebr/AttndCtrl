@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180608013852) do
+ActiveRecord::Schema.define(version: 20180617190837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,33 @@ ActiveRecord::Schema.define(version: 20180608013852) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "attendance_students", force: :cascade do |t|
+    t.string "state"
+    t.string "notes"
+    t.bigint "lti_user_id"
+    t.bigint "attendance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attendance_id"], name: "index_attendance_students_on_attendance_id"
+    t.index ["lti_user_id"], name: "index_attendance_students_on_lti_user_id"
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.datetime "date"
+    t.bigint "timetable_unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["timetable_unit_id"], name: "index_attendances_on_timetable_unit_id"
+  end
+
   create_table "lti_contexts", force: :cascade do |t|
     t.integer "lti_id"
     t.string "label"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tool_consumer_id"
+    t.index ["tool_consumer_id"], name: "index_lti_contexts_on_tool_consumer_id"
   end
 
   create_table "lti_roles", force: :cascade do |t|
@@ -56,6 +77,8 @@ ActiveRecord::Schema.define(version: 20180608013852) do
     t.datetime "updated_at", null: false
     t.integer "lti_id"
     t.bigint "lti_role_id"
+    t.bigint "lti_context_id"
+    t.index ["lti_context_id"], name: "index_lti_users_on_lti_context_id"
     t.index ["lti_role_id"], name: "index_lti_users_on_lti_role_id"
   end
 
@@ -89,6 +112,11 @@ ActiveRecord::Schema.define(version: 20180608013852) do
     t.index ["admin_id"], name: "index_tool_consumers_on_admin_id"
   end
 
+  add_foreign_key "attendance_students", "attendances"
+  add_foreign_key "attendance_students", "lti_users"
+  add_foreign_key "attendances", "timetable_units"
+  add_foreign_key "lti_contexts", "tool_consumers"
+  add_foreign_key "lti_users", "lti_contexts"
   add_foreign_key "lti_users", "lti_roles"
   add_foreign_key "timetable_units", "timetables"
   add_foreign_key "timetables", "tool_consumers"

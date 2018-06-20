@@ -22,6 +22,10 @@
   <strong>Email:</strong>
   <%= @lti_user.email %>
 </p>
+<p>
+  <strong>Role:</strong>
+  <%= @lti_user.lti_role.name %>
+</p>
 
 <%= link_to 'Edit', edit_lti_user_path(@lti_user) %> |
 <%= link_to 'Back', lti_users_path %>

@@ -1,0 +1,41 @@
+<h3>Attendance # <%= @attendance.id %></h3>
+
+<hr>
+
+<p>
+  <strong>Date:</strong>
+  <%= @attendance.date.nil? ? 'NULL' : @attendance.date.strftime("%d/%m/%Y %H:%M:%S") %>
+</p>
+
+<p>
+  <strong>Timetable unit:</strong>
+  <%= @attendance.timetable_unit.name %>
+</p>
+
+<p>
+  <strong>Lti context:</strong>
+  <%= @attendance.timetable_unit.timetable.lti_context.label %>
+</p>
+
+<h3>Students</h3>
+
+<table class="table table-hover mt-3">
+  <thead class="thead-light">
+  <tr>
+    <th>Full Name</th>
+    <th class="text-right pr-4" colspan="3">State</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @attendance.attendance_students.each do |attendance_student| %>
+    <tr>
+      <td><%= attendance_student.lti_user.full_name %></td>
+      <td><%= attendance_student.state %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
+<%= link_to 'Back', attendances_path %>

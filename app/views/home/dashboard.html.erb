@@ -1,4 +1,18 @@
 <div class="home-body text-center">
   <h1>This is the dashboard, should be private for admins</h1>
-  <%= image_tag 'list-numbers.jpg', width: 800 %>
+  <%= image_tag 'list-numbers.jpg', width: 800, class: 'dashboard-image' %>
+  <div class="dashboard-links" style="display: none">
+        <p>
+          <%= link_to 'Tool Consumers', tool_consumers_path %>
+        </p>
+        <p>
+          <%= link_to 'Lti Users',lti_users_path %>
+        </p>
+        <p>
+          <%= link_to 'Lti Contexts',lti_contexts_path %>
+        </p>
+        <p>
+          <%= link_to 'Attendances',attendances_path %>
+        </p>
+  </div>
 </div>

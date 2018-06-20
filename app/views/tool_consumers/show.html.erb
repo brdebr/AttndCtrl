@@ -26,21 +26,21 @@
   <table class="table table-hover mt-3">
 
     <thead class="thead-light">
-    <tr>
-      <th>
+    <tr class="d-flex">
+      <th class="col-8">
         Name
       </th>
-      <th class="text-right pr-4" colspan="3">Actions</th>
+      <th class="text-right pr-4 col-4" colspan="3">Actions</th>
     </tr>
     </thead>
 
     <tbody>
     <% @tool_consumer.timetables.each do |timetable| %>
-      <tr>
-        <td>
+      <tr class="d-flex">
+        <td class="col-8">
           <%= timetable.name %>
         </td>
-        <td class="text-right pr-4">
+        <td class="text-right pr-4 col-4">
           <%= link_to timetable do %>
             <span class="fas fa-eye mr-3"></span>
           <% end %>

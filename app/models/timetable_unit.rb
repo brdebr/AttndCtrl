@@ -1,5 +1,6 @@
 class TimetableUnit < ApplicationRecord
   belongs_to :timetable
+  has_many :attendances, dependent: :delete_all
 
   def as_json(options = {})
     {

@@ -10,6 +10,7 @@
 
     <div class="collapse navbar-collapse" id="navbarTop">
       <ul class="navbar-nav ml-auto mr-5">
+      <% if !@using_oauth %>
         <li class="nav-item <%= current_active_page?(root_path) %>">
           <%= link_to 'Home', root_path, class: 'nav-link' %>
         </li>
@@ -21,8 +22,9 @@
             <%= link_to 'Tool consumers', tool_consumers_path, class: 'nav-link' %></li>
           </li>
         <% end %>
-
+      <% end %>
       </ul>
+      <% if !@using_oauth %>
       <form class="form-inline my-2 my-lg-0">
         <% if admin_signed_in? %>
           <div class="dropdown">
@@ -49,6 +51,7 @@
 
 
       </form>
+      <% end %>
     </div>
   </nav>
 </div>
