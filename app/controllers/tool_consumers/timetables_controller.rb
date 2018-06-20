@@ -30,6 +30,7 @@ class ToolConsumers::TimetablesController < ApplicationController
   def new
     @timetable = Timetable.new
     @tool_consumer = ToolConsumer.find_by id:params['tool_consumer_id'], admin:current_admin
+    @lti_contexts = @tool_consumer.lti_contexts
     if @tool_consumer.nil?
       render file: 'public/404', status: :not_found
     end
@@ -37,6 +38,7 @@ class ToolConsumers::TimetablesController < ApplicationController
 
   # GET /timetables/1/edit
   def edit
+    @lti_contexts = @tool_consumer.lti_contexts
   end
 
   # POST /timetables

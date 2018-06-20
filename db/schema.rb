@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180617160117) do
+ActiveRecord::Schema.define(version: 20180617190837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20180617160117) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tool_consumer_id"
+    t.index ["tool_consumer_id"], name: "index_lti_contexts_on_tool_consumer_id"
   end
 
   create_table "lti_roles", force: :cascade do |t|
@@ -97,8 +99,6 @@ ActiveRecord::Schema.define(version: 20180617160117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "tool_consumer_id"
-    t.bigint "lti_context_id"
-    t.index ["lti_context_id"], name: "index_timetables_on_lti_context_id"
     t.index ["tool_consumer_id"], name: "index_timetables_on_tool_consumer_id"
   end
 
@@ -115,10 +115,10 @@ ActiveRecord::Schema.define(version: 20180617160117) do
   add_foreign_key "attendance_students", "attendances"
   add_foreign_key "attendance_students", "lti_users"
   add_foreign_key "attendances", "timetable_units"
+  add_foreign_key "lti_contexts", "tool_consumers"
   add_foreign_key "lti_users", "lti_contexts"
   add_foreign_key "lti_users", "lti_roles"
   add_foreign_key "timetable_units", "timetables"
-  add_foreign_key "timetables", "lti_contexts"
   add_foreign_key "timetables", "tool_consumers"
   add_foreign_key "tool_consumers", "admins"
 end
